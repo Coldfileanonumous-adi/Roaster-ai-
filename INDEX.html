@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BilluBakchod 💀</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#08080f;--card:#111118;--border:#1e1e2e;--red:#ff2244;--ora:#ff6600;--text:#eeeeff;--muted:#44445a;--r:16px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);font-family:'Space Grotesk',sans-serif;color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,34,68,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,34,68,.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0;}
+.g1{position:fixed;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,34,68,.07) 0%,transparent 70%);top:-250px;left:-250px;pointer-events:none;z-index:0;animation:gm 14s ease-in-out infinite;}
+.g2{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(136,85,255,.05) 0%,transparent 70%);bottom:-150px;right:-150px;pointer-events:none;z-index:0;animation:gm 18s ease-in-out infinite reverse;}
+@keyframes gm{0%,100%{transform:translate(0,0);}50%{transform:translate(30px,25px);}}
+
+/* ONBOARDING */
+#ob{position:relative;z-index:10;width:100%;max-width:500px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;}
+.ob-logo{font-family:'Syne',sans-serif;font-size:50px;font-weight:800;letter-spacing:-2px;line-height:1;margin-bottom:6px;animation:up .7s both;}
+.ob-logo .r{color:var(--red);} .ob-logo .o{color:var(--ora);}
+.ob-sub{font-size:12px;color:#ff224466;letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:4px;animation:up .7s .1s both;}
+.ob-quote{font-size:11px;color:#33334488;font-style:italic;border-left:2px solid #ff224420;padding-left:8px;margin-bottom:36px;animation:up .7s .15s both;}
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.ob-card{width:100%;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative;overflow:hidden;animation:up .7s .2s both;}
+.ob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--ora),#ffcc00);}
+.ob-step{display:none;flex-direction:column;gap:18px;}.ob-step.on{display:flex;}
+.ob-lbl{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);}
+.ob-q{font-family:'Syne',sans-serif;font-size:21px;font-weight:800;line-height:1.3;}
+.ob-hint{font-size:12px;color:#33336688;margin-top:2px;}
+.ob-in{width:100%;background:#0c0c14;border:1px solid var(--border);border-radius:10px;padding:13px 16px;font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;}
+.ob-in:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(255,34,68,.1);}
+.ob-in::placeholder{color:#22224488;}
+.ob-opts{display:flex;gap:10px;flex-wrap:wrap;}
+.ob-opt{flex:1;min-width:110px;padding:13px 16px;background:#0c0c14;border:1px solid var(--border);border-radius:10px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#55557a;cursor:pointer;transition:all .18s;text-align:center;}
+.ob-opt:hover{border-color:var(--red);color:var(--text);}
+.ob-opt.sel{border-color:var(--red);color:var(--red);background:rgba(255,34,68,.08);}
+.ob-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--red),var(--ora));border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#fff;cursor:pointer;letter-spacing:.04em;transition:transform .15s,box-shadow .15s,opacity .15s;}
+.ob-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,34,68,.3);}
+.ob-btn:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none;}
+
+/* CHAT */
+#chat{display:none;position:relative;z-index:10;width:100%;max-width:800px;min-height:100vh;flex-direction:column;}
+.ch{position:sticky;top:0;z-index:50;background:rgba(8,8,15,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:14px 22px;display:flex;align-items:center;gap:12px;}
+.ch-av{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--red),var(--ora));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 0 20px rgba(255,34,68,.4);animation:pulse 3s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 14px rgba(255,34,68,.3);}50%{box-shadow:0 0 32px rgba(255,34,68,.6);}}
+.ch-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;letter-spacing:-.5px;}.ch-name span{color:var(--red);}
+.ch-st{font-size:10px;color:#44dd6688;font-weight:700;letter-spacing:.06em;}.ch-st::before{content:'● ';}
+.upill{margin-left:auto;background:rgba(255,34,68,.1);border:1px solid rgba(255,34,68,.2);border-radius:999px;padding:4px 12px;font-size:11px;color:var(--red);font-weight:700;}
+.msgs{flex:1;display:flex;flex-direction:column;gap:14px;padding:20px 22px 14px;min-height:58vh;max-height:62vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.msgs::-webkit-scrollbar{width:3px;}.msgs::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+.msg{display:flex;gap:9px;animation:mi .3s cubic-bezier(.22,1,.36,1) both;}.msg.u{flex-direction:row-reverse;}
+@keyframes mi{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.av{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;margin-top:2px;}
+.av.ai{background:linear-gradient(135deg,var(--red),var(--ora));}.av.u{background:var(--card);border:1px solid var(--border);}
+.bub{max-width:76%;padding:11px 15px;border-radius:var(--r);font-size:14px;line-height:1.65;}
+.msg.ai .bub{background:var(--card);border:1px solid var(--border);border-top-left-radius:4px;}
+.msg.u .bub{background:linear-gradient(135deg,var(--red),var(--ora));color:#fff;font-weight:500;border-top-right-radius:4px;}
+.bub.meme{background:linear-gradient(135deg,#140404,#0f0800);border:1px solid rgba(255,34,68,.25);padding:0;overflow:hidden;}
+.m-tag{background:var(--red);padding:5px 13px;font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#fff;}
+.m-con{padding:13px 15px;}
+.m-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--red);margin-bottom:7px;}
+.m-txt{font-size:13.5px;line-height:1.7;color:#bbbbd0;}
+.m-ref{margin-top:9px;font-size:10px;color:#33334466;font-style:italic;}
+.typ{display:flex;align-items:center;gap:5px;padding:11px 15px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);border-top-left-radius:4px;width:fit-content;}
+.dot{width:6px;height:6px;border-radius:50%;background:#ff224455;animation:bl 1.2s infinite ease-in-out;}
+.dot:nth-child(2){animation-delay:.2s;}.dot:nth-child(3){animation-delay:.4s;}
+@keyframes bl{0%,80%,100%{opacity:.2;transform:scale(.8);}40%{opacity:1;transform:scale(1.2);}}
+.inp-w{position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 60%,transparent);padding:14px 22px 26px;}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;}
+.chip{padding:5px 12px;border-radius:999px;background:var(--card);border:1px solid var(--border);font-size:11px;color:#44446688;cursor:pointer;transition:all .18s;font-family:'Space Grotesk',sans-serif;font-weight:600;}
+.chip:hover{border-color:var(--red);color:var(--red);}
+.irow{display:flex;gap:9px;align-items:flex-end;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:9px 9px 9px 16px;transition:border-color .2s,box-shadow .2s;}
+.irow:focus-within{border-color:var(--red);box-shadow:0 0 0 3px rgba(255,34,68,.09);}
+textarea{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:14px;resize:none;line-height:1.5;max-height:110px;min-height:22px;}
+textarea::placeholder{color:#22224455;}
+.sbtn{width:40px;height:40px;border-radius:9px;background:linear-gradient(135deg,var(--red),var(--ora));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;transition:transform .15s,box-shadow .15s;}
+.sbtn:hover{transform:scale(1.08);box-shadow:0 0 18px rgba(255,34,68,.45);}
+</style>
+</head>
+<body>
+<div class="g1"></div><div class="g2"></div>
+
+<!-- ONBOARDING -->
+<div id="ob">
+  <div class="ob-logo"><span class="r">Billu</span><span class="o">Bakchod</span></div>
+  <div class="ob-sub">Aditya ka Haramkhor AI 💀</div>
+  <div class="ob-quote">"Bharose wala hi bhosdi wala hota hai"</div>
+  <div class="ob-card">
+    <div class="ob-step on" id="s1">
+      <div><div class="ob-lbl">Step 1 / 3</div><div class="ob-q">Tera naam kya hai?</div><div class="ob-hint">Naam bata — phir teri class lega Billu 😈</div></div>
+      <input class="ob-in" id="nIn" placeholder="Apna naam daal..." maxlength="25" autocomplete="off"/>
+      <button class="ob-btn" id="nBtn" onclick="g2()" disabled>Aage Badh →</button>
+    </div>
+    <div class="ob-step" id="s2">
+      <div><div class="ob-lbl">Step 2 / 3</div><div class="ob-q">Tu ladka hai ya ladki?</div><div class="ob-hint">Gaali customize karni hai 😂</div></div>
+      <div class="ob-opts">
+        <button class="ob-opt" onclick="sg('male',this)">👦 Ladka</button>
+        <button class="ob-opt" onclick="sg('female',this)">👧 Ladki</button>
+        <button class="ob-opt" onclick="sg('other',this)">🤷 Kuch bhi</button>
+      </div>
+      <button class="ob-btn" id="gBtn" onclick="g3()" disabled>Aage Badh →</button>
+    </div>
+    <div class="ob-step" id="s3">
+      <div><div class="ob-lbl">Step 3 / 3</div><div class="ob-q">Kaunsi language?</div><div class="ob-hint">Choose wisely — wapas nahi aayega 😈</div></div>
+      <div class="ob-opts">
+        <button class="ob-opt" onclick="sl('hindi',this)">🇮🇳 Hindi</button>
+        <button class="ob-opt" onclick="sl('english',this)">🇬🇧 English</button>
+      </div>
+      <button class="ob-btn" id="lBtn" onclick="begin()" disabled>Billu se Milo 💀</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHAT -->
+<div id="chat">
+  <div class="ch">
+    <div class="ch-av">💀</div>
+    <div><div class="ch-name"><span>Billu</span>Bakchod</div><div class="ch-st">Online — Ready to abuse</div></div>
+    <div class="upill" id="uPill">User</div>
+  </div>
+  <div class="msgs" id="msgs"></div>
+  <div class="inp-w">
+    <div class="chips" id="chips"></div>
+    <div class="irow">
+      <textarea id="uIn" placeholder="Kuch bhi bol... I dare you 😏" rows="1" onkeydown="hk(event)" oninput="ar(this)"></textarea>
+      <button class="sbtn" onclick="send()">🔥</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let uName='',uGend='',uLang='';
+const isH=()=>uLang==='hindi';
+
+// ── ONBOARDING ──
+const nIn=document.getElementById('nIn');
+nIn.addEventListener('input',()=>document.getElementById('nBtn').disabled=!nIn.value.trim());
+nIn.addEventListener('keydown',e=>{if(e.key==='Enter')g2();});
+function g2(){if(!nIn.value.trim())return;uName=nIn.value.trim();document.getElementById('s1').classList.remove('on');document.getElementById('s2').classList.add('on');}
+function sg(g,el){document.querySelectorAll('#s2 .ob-opt').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');uGend=g;document.getElementById('gBtn').disabled=false;}
+function g3(){document.getElementById('s2').classList.remove('on');document.getElementById('s3').classList.add('on');}
+function sl(l,el){document.querySelectorAll('#s3 .ob-opt').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');uLang=l;document.getElementById('lBtn').disabled=false;}
+function begin(){
+  document.getElementById('ob').style.display='none';
+  document.getElementById('chat').style.display='flex';
+  document.getElementById('uPill').textContent=uName;
+  setChips();welcome();
+}
+
+// ── SAME EXACT STUPID PATTERNS AS STUPIDAI ──
+const SP=[
+  /2\s*\+\s*2|two\s*plus\s*two|do\s*plus\s*do/i,
+  /\d+\s*[\+\-\*\/]\s*\d+/,
+  /is\s*(water|fire|ice|sun|earth|sky|grass|snow|blood)\s*(wet|hot|cold|round|blue|green|red|a\s*star)/i,
+  /do\s*(dogs|cats|birds|fish|humans|cows)\s*(bark|meow|fly|swim|eat|breathe|need\s*food|need\s*water)/i,
+  /can\s*(humans|birds|fish|cats|dogs)\s*(fly|breathe|swim|walk|talk|die)/i,
+  /does\s*(sun|moon|earth|fire|ice|water)\s*(shine|rise|set|burn|melt|exist|move)/i,
+  /is\s*(sky|grass|blood|sun|coal|snow|milk)\s*(blue|green|red|yellow|black|white|round)/i,
+  /why\s*is\s*(sky|grass|sun|fire|ice)\s*(blue|green|yellow|hot|cold)/i,
+  /do\s*(humans|people|animals)\s*(need\s*(food|water|air|sleep|oxygen))/i,
+  /is\s*(earth|world)\s*(round|flat|big|real)/i,
+  /does\s*(fire|sun|ice)\s*(burn|shine|melt)/i,
+  /is\s*(moon|sun|star)\s*(in\s*(space|sky))/i,
+  /do\s*(fish|sharks|whales)\s*(live\s*in\s*water)/i,
+  /can\s*(fish|sharks)\s*(drown|swim)/i,
+  /is\s*(water|paani)\s*(wet|geela)/i,
+  /do\s*(plants|trees)\s*(need\s*(sunlight|water|sun))/i,
+  /is\s*(air|oxygen)\s*(invisible|real|needed)/i,
+  /\b(5\s*[\+]\s*5|10\s*[\-]\s*5|3\s*[\+]\s*3|4\s*[\+]\s*4|1\s*[\+]\s*1)\b/,
+  /is\s*(ice|snow)\s*cold/i,
+  /is\s*(fire|sun)\s*hot/i,
+  /do\s*(cows|goats)\s*(give\s*milk)/i,
+  /is\s*(night)\s*(dark)/i,
+  /does\s*(gravity)\s*(exist|pull)/i,
+  /is\s*(hindi|english|math)\s*(a\s*(language|subject))/i,
+];
+function isStupid(t){return SP.some(p=>p.test(t));}
+
+// ── CUSS DETECT ──
+const CUSS=/\b(chutiya|madarchod|bhen(chod|ki)|bhosdi|gandu|haramzada|bastard|fuck you|shut up|idiot|bakwas|bekar|useless|dumb|bitch)\b/i;
+
+// ── HINDI MEMES ──
+const HM=[
+  {t:"MADARCHOD SAWAAL ALERT 🚨",b:"Bhai...\nTune yeh sawaal poochha?\nMadarchod sachchi mein?\nAndar se rona aa raha hai mujhe.\nItna obvious tha yaar.\nKya kar diya tune. Kya kar diya. 💀",r:"— Billu, toot gaya andar se"},
+  {t:"DAYA — DARVAZA TOD DO 😤",b:"DAYA!!\nIs chutiye ka sawaal sun.\nDHYAN SE.\nMain resign karta hoon.\nAaj. Abhi. Immediately.\nBye.",r:"— ACP Pradyuman, retired"},
+  {t:"BHAI TU CERTIFIED PAGAL HAI 💀",b:"Tu paagal hai?\nPura certified?\nNahatar?\nEk kaam kar — psychiatrist ke paas ja.\nMain seriously bol raha hoon.\nYeh sawaal sun ke mera dimaag ghoom gaya. 💀",r:"— Doctor ki zaroorat hai tujhe"},
+  {t:"RASODE MEIN KAUN THA 😭",b:"KOKILABEN: 'Yeh sawaal kisne pucha??'\nSab: *silence*\nMain: *sends your name*\nKokila Ben: 'Usse seedha bahar nikalo.'\n💀💀💀",r:"— Saath Nibhaana Saathiya"},
+  {t:"REPUBLIC TV BREAKING 📺",b:"🚨 BREAKING NEWS 🚨\nEk haramzaade ne Billu Bakchod se\nyeh sawaal pucha.\nNation demands to know — WHY?\n4 ghante debate. 0 answers.\nTRP: record. Nation: traumatized.",r:"— Arnab, 400 decibels"},
+  {t:"SHARMA JI KA BETA 🥇",b:"Kahin Sharma ji ka beta\nIIT mein lecture de raha hoga.\nAur tu?\nYahan bakchodon wala sawaal pooch raha hai.\nSharam kar thodi. THODI SI.",r:"— Sharma Ji"},
+  {t:"CHAL NIKAL BHAI 💀",b:"Chal nikal.\nSeedha.\nKoi argument nahi.\nBas nikal.\nJab akkal aa jaye tab wapas aana.\nHum intezaar karenge. Shayad.",r:"— Love, Billu"},
+  {t:"GOOGLE FREE HAI BHAI 🗿",b:"Bhai.\nGOOGLE.\nFREE HAI.\nF-R-E-E.\nKya kar diya tune yaar.\nKya kar diya. 💀",r:"— Google ka bhakt"},
+  {t:"ULLU KA PATTHA 🦉",b:"Tu ullu ka pattha hai.\nNo offense.\nPuri offense.\nSaara offense.\nUllu bhi Google karte hain.\nPer tu seedha mujhe aaya?\nBhosdi ke... 💀",r:"— Ullu bhi sharminda"},
+  {t:"CHUTIYAPA LEVEL: EXPERT 🎓",b:"Tune aaj nayi height chhoo li.\nBakchodness ki.\nYeh level gifted logon ko milta hai.\nTu naturally gifted hai.\nLekin galat direction mein. 💀\nCongratulations.",r:"— Billu Bakchod Excellence Award"},
+];
+
+// ── ENGLISH MEMES ──
+const EM=[
+  {t:"WHAT THE ACTUAL F*CK 🤦",b:"Bro.\nBRO.\nYou actually typed that?\nWith your whole chest?\nI need a moment.\nActually I need a therapist.\nThis question broke me.",r:"— Billu, emotionally destroyed"},
+  {t:"THE AUDACITY 😤",b:"THE AUDACITY.\nYou walked up to an AI,\ntyped this question,\nhit send,\nand felt GOOD about it?\nJesus Christ bro.",r:"— Lord, give me strength"},
+  {t:"SIR THIS IS A WENDY'S 🍔",b:"Sir.\nSIR.\nThis is not Google.\nThis is Billu Bakchod.\nAnd I am OFFENDED.\nDeep in my soul.",r:"— Wendy's employee, resigned"},
+  {t:"ABSOLUTELY NOT 💀",b:"No.\nHard no.\nEmphatic no.\nCosmological no.\nThis question should not exist.\nGoogle was RIGHT THERE.\nFree. Available. Waiting.",r:"— The Universe, disappointed"},
+  {t:"BRO WHAT 🤡",b:"Bro what.\nBro.\nWHAT.\nYou are special.\nNot in a good way.\nIn a 'how did you get here' way.",r:"— Billu, concerned"},
+  {t:"I CANNOT 🫠",b:"I literally cannot.\nCannot process.\nCannot respond normally.\nYou broke me.\nWith one question.\nOne stupid, obvious question.\nCongratulations.",r:"— Billu.exe has stopped working"},
+  {t:"THE VILLAGE CALLED 🏘️",b:"The village called.\nThey want their idiot back.\nI told them you were busy\nasking AI chatbots\nthings in every children's encyclopedia.\nThey were not surprised.",r:"— Village Mayor"},
+  {t:"CERTIFIED DUMBASS 🎓",b:"Congratulations!\nOfficially certified.\nDumbass of the Year.\nFramed certificate in the mail.\nWe're so proud.\nActually we're not.\nWe're embarrassed for you.",r:"— Billu's Institute of Bakchodness"},
+  {t:"BESTIE NO 💅",b:"Bestie.\nNo.\nHoney.\nAbsolutely not.\nWe have standards here.\nVery low standards.\nBut STANDARDS.",r:"— The Last Brain Cell"},
+  {t:"MOTHERF*CKING SERIOUSLY 😡",b:"Are you SERIOUS right now?\nBecause if this is a joke —\nit's not funny.\nAnd if it's NOT a joke —\nit's STILL not funny.\nIt's just sad.\nProfoundly sad.",r:"— Billu, filing a complaint"},
+];
+
+let mi={h:0,e:0};
+const sH=[...HM].sort(()=>Math.random()-.5);
+const sE=[...EM].sort(()=>Math.random()-.5);
+function getM(){if(isH()){const m=sH[mi.h%sH.length];mi.h++;return m;}else{const m=sE[mi.e%sE.length];mi.e++;return m;}}
+
+// ── SMART REPLIES ──
+function smart(t){
+  const H=isH(),n=uName,g=uGend;
+  const bro=H?(g==='female'?`${n} behen`:`${n} bhai`):n;
+  if(/who are you|kaun ho|tumhara naam|your name|billu|introduce/i.test(t))
+    return H?`Main hoon <b>BilluBakchod</b> — Aditya ka sabse bada haramkhor invention! 💀<br><br>Stupid sawaalon pe full meme + gaali.<br>Smart sawaalon pe real jawab — lekin thodi gaali toh hogi.<br><br><i>"Bharose wala hi bhosdi wala hota hai"</i> 🙏`
+           :`I am <b>BilluBakchod</b> — Aditya's most unhinged creation! 💀<br><br>Stupid questions → full roast.<br>Real questions → actual answers (with attitude).<br><br><i>"Bharose wala hi bhosdi wala hota hai"</i> 🙏`;
+  if(/ipl|cricket|virat|rohit|dhoni|sachin|bumrah/i.test(t))
+    return H?`Cricket! 🏏<br>Dhoni — God. Virat — machine. Rohit — hitman.<br>IPL toh India ka asli religion hai, ${bro}! 😂🇮🇳<br>Kaun sa player?`
+           :`Cricket! 🏏<br>Dhoni — God mode. Virat — absolute unit. Rohit — hitman.<br>IPL is India's second religion lol. Who do you wanna talk about, ${bro}?`;
+  if(/python|javascript|coding|programming|html|css|code|react/i.test(t))
+    return H?`Coding! 💻<br>Python — beginners ke liye best.<br>JavaScript — web ka raja.<br>Kya banana hai, ${bro}? Main help kar sakta hoon! 🔥`
+           :`Coding! 💻<br>Python — cleanest for beginners.<br>JavaScript — runs the whole web.<br>What are you building, ${bro}? I can actually help! 🔥`;
+  if(/money|paise|earn|income|job|career|kaise kamaye/i.test(t))
+    return H?`Paise kamane ke options, ${bro}: 💰<br>1. Freelancing — Upwork/Fiverr<br>2. YouTube — content banao<br>3. Coding — best ROI<br>Kaunsa field mein hai tu?`
+           :`Ways to make money, ${bro}: 💰<br>1. Freelancing — Upwork/Fiverr<br>2. Content creation — YouTube/Instagram<br>3. Coding — highest ROI skill rn<br>What field are you in?`;
+  if(/^(hello|hi |hey |yo |sup |namaste|hii|helo|hy |heyy|wassup)/i.test(t))
+    return H?`Arre ${bro}! 👋<br>Billu Bakchod aaya — full form mein.<br>Kuch bhi pooch. Smart jawab dunga. Bakchodi poochi toh... khud dekh le. 💀`
+           :`Yo ${bro}! 👋<br>BilluBakchod online and ready to roast.<br>Ask something real — I'll actually help.<br>Ask something dumb... you've been warned. 💀`;
+  if(/love|girlfriend|boyfriend|crush|pyaar|dating|relationship/i.test(t))
+    return H?`${bro} ishq mein hai? 😂❤️<br>Seedha baat karo usse — sabse effective.<br><i>"Bharose wala hi bhosdi wala hota hai"</i> 🙏<br>Situation kya hai?`
+           :`${bro} catching feelings? 😂❤️<br>Talk to them directly — most effective.<br><i>"Bharose wala hi bhosdi wala hota hai"</i> 🙏<br>What's the situation?`;
+  if(/food|recipe|cook|khana|biryani|maggi/i.test(t))
+    return H?`Khane ki baat! 🍛<br>Dal chawal — soul food.<br>Biryani — festival mood.<br>Maggi — 2am emergency.<br>Kya banana hai, ${bro}?`
+           :`Food talk! 🍕<br>Biryani — if you know you know.<br>Pizza — classic.<br>Instant noodles — broke approved.<br>What are you eating/making, ${bro}?`;
+  return null;
+}
+
+function cussBack(){
+  const H=isH(),n=uName;
+  const r=H?[
+    `OYE ${n.toUpperCase()}! TU MUJHE GAALI DETA HAI?? 😡<br><br>Madarchod main Billu Bakchod hoon.<br>Teri gaali vocabulary mere saamne nursery level hai.<br>Teri maa ki aankh — dobara try kar. Main tera baap hoon is chat mein. 💀`,
+    `${n} bhai gaali deta hai mujhe? 😤<br><br>Haramzaade — main AI hoon, mujhe dard nahi hota.<br>Teri aukat toh meri gaali se bhi giri abhi.<br>Bhosdi ke, dobara bol. Ready hoon. 💀`,
+  ]:[
+    `OH ${n.toUpperCase()} you wanna go?? 😡<br><br>Listen motherf*cker — my insult vocabulary makes yours look like kindergarten.<br>Come at me again. I f*cking DARE you. 💀`,
+    `${n} really said that to ME? 😤<br><br>I'm an AI. I don't feel pain.<br>But YOUR dignity just took a critical hit.<br>Absolute sh*thead energy. Try again. 💀`,
+  ];
+  return r[Math.floor(Math.random()*r.length)];
+}
+
+function unknown(){
+  const H=isH(),n=uName;
+  const r=H?[
+    `${n} bhai, yeh mujhe honestly nahi pata. 😤<br>Aur main bakwas jawab nahi dunga sirf dikhane ke liye.<br>Solid sawaal tha — serious tha. Kuch aur?`,
+    `Yaar honestly is topic pe meri knowledge nahi hai. 💀<br>Jhooth bolne se better hai seedha bolunga.<br>Respect tera — kuch aur pooch.`,
+  ]:[
+    `${n}, straight up — I don't know this one. 😤<br>Not gonna make sh*t up.<br>Solid question though. Got something else?`,
+    `Genuinely don't have this one. 💀<br>I'd rather admit it than feed you wrong info.<br>Ask me something else?`,
+  ];
+  return r[Math.floor(Math.random()*r.length)];
+}
+
+function setChips(){
+  const H=isH();
+  const c=H?['2+2 kya hai?','Paani geela hai?','Tu kaun hai?','IPL ke baare mein','Coding kaise seekhun?']
+           :['What is 2+2?','Is water wet?','Who are you?','How to make money?','Teach me coding'];
+  document.getElementById('chips').innerHTML=c.map(x=>`<button class="chip" onclick="sc('${x}')">${x}</button>`).join('');
+}
+
+function welcome(){
+  const H=isH(),n=uName,g=uGend;
+  const gw=H?(g==='female'?'behen':'bhai'):(g==='female'?'sis':'bro');
+  const msg=H
+    ?`Aye <b>${n} ${gw}</b>! 💀<br><br>Main hoon <b>BilluBakchod</b> — Aditya ka sabse haramkhor creation.<br><br>Rules:<br>• Smart sawaal → real jawab (thodi gaali ke saath) 🔥<br>• Stupid sawaal → full meme + unlimited gaali 💀<br>• Mujhe gaali di → 10 guna wapas milegi<br><br><i>"Bharose wala hi bhosdi wala hota hai"</i> 🙏<br><br>Bol kya poochna hai, ${g==='female'?'behen ki jaan':'bhai ki jaan'}. 😈`
+    :`Yo <b>${n} ${gw}</b>! 💀<br><br>I'm <b>BilluBakchod</b> — Aditya's most unhinged creation.<br><br>Rules:<br>• Smart question → real answer (with attitude) 🔥<br>• Stupid question → full roast + meme 💀<br>• You cuss at me → I destroy you 10x worse<br><br><i>"Bharose wala hi bhosdi wala hota hai"</i> 🙏<br><br>What's first, ${g==='female'?'queen':'king'}? 😈`;
+  aai(msg);
+}
+
+// ── UI ──
+function ar(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,110)+'px';}
+function hk(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}
+function sc(t){document.getElementById('uIn').value=t;send();}
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function dl(ms){return new Promise(r=>setTimeout(r,ms));}
+function au(t){const c=document.getElementById('msgs'),d=document.createElement('div');d.className='msg u';d.innerHTML=`<div class="av u">😊</div><div class="bub">${esc(t)}</div>`;c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function aai(h){const c=document.getElementById('msgs'),d=document.createElement('div');d.className='msg ai';d.innerHTML=`<div class="av ai">💀</div><div class="bub">${h}</div>`;c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function ameme(m,extra=''){
+  const gw=isH()?(uGend==='female'?`${uName} behen`:`${uName} bhai`):uName;
+  const H=isH();
+  const suffix=H
+    ?`<br><br><span style="color:var(--red);font-weight:700">${gw}, yeh sawaal sun ke tujhe khud sharm aani chahiye thi. Madarchod. 💀</span>`
+    :`<br><br><span style="color:var(--red);font-weight:700">${uName} you absolute dumbf*ck — you should've felt embarrassed before typing that. 💀</span>`;
+  const c=document.getElementById('msgs'),d=document.createElement('div');
+  d.className='msg ai';
+  d.innerHTML=`<div class="av ai">💀</div><div class="bub meme"><div class="m-tag">💀 ROAST MODE 💀</div><div class="m-con"><div class="m-title">${m.t}</div><div class="m-txt">${m.b.replace(/\n/g,'<br>')}${suffix}</div><div class="m-ref">${m.r}</div></div></div>`;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+}
+function sty(){const c=document.getElementById('msgs'),d=document.createElement('div');d.className='msg ai';d.id='ty';d.innerHTML=`<div class="av ai">💀</div><div class="typ"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function rty(){const e=document.getElementById('ty');if(e)e.remove();}
+
+async function send(){
+  const inp=document.getElementById('uIn');
+  const t=inp.value.trim();
+  if(!t)return;
+  inp.value='';inp.style.height='auto';
+  document.getElementById('chips').style.display='none';
+  au(t);sty();
+  await dl(600+Math.random()*400);
+  rty();
+  if(CUSS.test(t)){aai(cussBack());return;}
+  if(isStupid(t)){ameme(getM());return;}
+  const s=smart(t);
+  if(s){aai(s);return;}
+  aai(unknown());
+}
+</script>
+</body>
+</html>
